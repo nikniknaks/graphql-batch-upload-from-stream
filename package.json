@@ -5,7 +5,6 @@
   "main": "index.ts",
   "dependencies": {
     "graphql-yoga": "^1.18.3",
-    "react": "^16.12.0",
     "typescript": "^3.7.4"
   },
   "devDependencies": {},
@@ -13,7 +12,6 @@
     "test": "test",
     "start": "npx scr/index.ts"
   },
-  "repository": "git+https://github.com/nikniknaks/graphql-learney.git",
   "author": "Nick Adams",
   "license": "ISC",
   "bugs": {
