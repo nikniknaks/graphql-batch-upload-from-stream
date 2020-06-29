@@ -8,10 +8,6 @@
     "typescript": "^3.7.4"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "test",
-    "start": "npx scr/index.ts"
-  },
   "author": "Nick Adams",
   "license": "ISC",
   "bugs": {
