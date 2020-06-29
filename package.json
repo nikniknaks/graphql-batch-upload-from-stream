@@ -13,5 +13,6 @@
   "bugs": {
     "url": "https://github.com/nikniknaks/graphql-learney/issues"
   },
-  "homepage": "https://github.com/nikniknaks/graphql-learney#readme"
+  "homepage": "https://github.com/nikniknaks/graphql-learney#readme",
+  "repository": "git@github.com:nikniknaks/graphql-learney.git"
 }
