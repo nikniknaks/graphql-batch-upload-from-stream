@@ -1,0 +1,16 @@
+type Letter @embedded {
+  letter: String!
+  occurrence: Int!
+}
+
+type Word {
+  word: String! @unique
+  letters: [Letter]!
+  length: Int!
+}
+
+type Query {
+  word: Word
+  wordByLength(length: Int): Word
+  allWords: [Word]
+}
