@@ -2,12 +2,12 @@ const constructLetters = (word) => {
   return word.split('').reduce(
     (acc, cur) => {
       if (acc.map(v => v.letter).includes(cur)) {
-        acc.forEach(v => v.letter === cur && v.occurence++)
+        acc.forEach(v => v.letter === cur && v.occurrence++)
         return [...acc]
       } else {
         return [...acc, {
           letter: cur,
-          occurence: 1
+          occurrence: 1
         }]
       }
     },
