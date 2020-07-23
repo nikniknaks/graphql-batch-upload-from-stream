@@ -1,16 +1,20 @@
 type Letter @embedded {
+  letter: String! @unique
+  occurrence: Int!
+}
+
+type Word @collection(name: "Word") {
+  word: String! @unique
+  letters: [Letter!]!
+  length: Int!
+}
+
+input LetterInput {
   letter: String!
   occurrence: Int!
 }
 
-type Word {
-  word: String! @unique
-  letters: [Letter]!
-  length: Int!
-}
-
 type Query {
-  word: Word
-  wordByLength(length: Int): Word
-  allWords: [Word]
+  GetWordByLength(length: Int!): [Word]
+  GetWordByLetter(letters: [LetterInput!]!): Word @resolver(name: "word_retriever")
 }
