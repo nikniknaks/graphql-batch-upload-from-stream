@@ -2,3 +2,5 @@
 node_modules/
 *.code-workspace
 .vscode
+.env
+faunadb_secrets.txt
