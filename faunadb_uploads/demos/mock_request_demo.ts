@@ -14,7 +14,7 @@ const looper = async () => {
 
     console.log('streamContent.length: ', streamContent ? streamContent.length : streamContent)
 
-    // console.log('streamContent: ', streamContent)
+    console.log('streamContent: ', streamContent)
 
     const result = await request()
     console.log('result: ', result)

@@ -1,0 +1,10 @@
+mutation AddWordParamd($word: WordInput!) {
+  createWord(data: $word) {
+    word
+    letters {
+    	letter
+      occurrence
+    }
+    length
+  }
+}

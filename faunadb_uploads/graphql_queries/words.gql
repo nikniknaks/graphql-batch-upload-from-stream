@@ -9,12 +9,45 @@ type Word @collection(name: "Word") {
   length: Int!
 }
 
+type TestWord @collection(name: "TestWord") {
+  word: String! @unique
+  letters: LetterTwo
+  length: Int!
+}
+
 input LetterInput {
   letter: String!
   occurrence: Int!
 }
 
+type LetterTwo {
+  a: Int,
+  b: Int,
+  m: Int,
+  o: Int,
+  d: Int,
+  l: Int,
+  i: Int,
+  t: Int,
+  e: Int,
+  s: Int
+}
+
+input LetterTwoInput {
+  a: Int,
+  b: Int,
+  m: Int,
+  o: Int,
+  d: Int,
+  l: Int,
+  i: Int,
+  t: Int,
+  e: Int,
+  s: Int
+}
+
 type Query {
   GetWordByLength(length: Int!): [Word]
   GetWordByLetter(letters: [LetterInput!]!): Word @resolver(name: "word_retriever")
+  GetWordTwoByLetter(letters: LetterTwoInput!): TestWord @resolver(name: "word_two_retriever")
 }

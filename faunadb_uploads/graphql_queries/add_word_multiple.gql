@@ -1,0 +1,101 @@
+mutation {
+  aadvark: createWord(
+    data: {
+		word: "aardvark"
+      letters: [
+          {
+            letter: "a"
+            occurrence: 3
+          },{
+            letter: "r"
+            occurrence: 2
+          },{
+            letter: "d"
+            occurrence: 1
+          },{
+            letter: "v"
+            occurrence: 1
+          },{
+            letter: "r"
+            occurrence: 1
+          },{
+            letter: "k"
+            occurrence: 1
+          }
+        ]
+      length: 8
+    }) {
+      word
+      letters {
+        letter
+        occurrence
+      }
+      length
+    }
+  aardwolf: createWord(
+    data: {
+		word: "aardwolf"
+      letters: [
+          {
+            letter: "a"
+            occurrence: 3
+          },{
+            letter: "r"
+            occurrence: 2
+          },{
+            letter: "d"
+            occurrence: 1
+          },{
+            letter: "v"
+            occurrence: 1
+          },{
+            letter: "r"
+            occurrence: 1
+          },{
+            letter: "k"
+            occurrence: 1
+          }
+        ]
+      length: 8
+    }) {
+      word
+      letters {
+        letter
+        occurrence
+      }
+      length
+    }
+  aardappel: createWord(
+    data: {
+		word: "aardappel"
+      letters: [
+          {
+            letter: "a"
+            occurrence: 3
+          },{
+            letter: "r"
+            occurrence: 2
+          },{
+            letter: "d"
+            occurrence: 1
+          },{
+            letter: "v"
+            occurrence: 1
+          },{
+            letter: "r"
+            occurrence: 1
+          },{
+            letter: "k"
+            occurrence: 1
+          }
+        ]
+      length: 8
+    }) {
+      word
+      letters {
+        letter
+        occurrence
+      }
+      length
+    }
+}

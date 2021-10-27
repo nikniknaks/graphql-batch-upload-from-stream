@@ -5,6 +5,7 @@ const { Duplex } = require('stream')
 const { Transform } = require('stream')
 const { Readable } = require('stream');
 
+const gql = require('graphql-tag')
 
 const { parser } = require('stream-json/Parser')
 const {filter} = require('stream-json/filters/Filter')
@@ -17,6 +18,10 @@ const { pick } = require('stream-json/filters/Pick')
 const Requests = require('../modules/mock_request.ts')
 const AddWord = require('../modules/faunadb_addword.ts')
 const AsyncRequestGenerator = require('../modules/async_request_generator.ts')
+const postDataFaunaDB = require('../modules/faunadb_graphql_query.ts')
+const faunaDBBatch = require('../modules/faunadb_graphql_batch_template.ts')
+const postMultiDataFaunaDB = require('../modules/faunadb_graphql_query_multiple.ts')
+
 
 const request = Requests[2]
 
@@ -53,19 +58,33 @@ const uploadStream = fs.createReadStream(
 
 // uploadStream.on('data', data => console.log(data))
 
+let query = gql`${fs.readFileSync('../graphql_queries/add_word_paramd.gql', 'utf8')}`
+// console.log(query)
+
 const looper = async (stream) => {
   let counter = 0;
   let accumulator = []
+  let chunkCounter = 0
   for await (const chunk of stream) {
-    if (counter === 30000) {
-      accumulator.push(chunk)
-      const response = await request(accumulator)
-      counter = 0
-      accumulator = []
-      console.log(response)
-    } else {
-      accumulator.push(chunk)
-      counter++
+    chunkCounter++
+    if (chunkCounter > 159866) {
+      // if (counter === 30000) {
+      if (counter === 600) {
+        // console.log(chunk)
+        // console.log(counter)
+        accumulator.push(chunk)
+        const batchedGQLquery = faunaDBBatch(accumulator)
+        // const response = await postDataFaunaDB(query, chunk)
+        const response = await postMultiDataFaunaDB(batchedGQLquery)
+        console.log(response)
+        // const response = await request(accumulator)
+        counter = 0
+        // counter++
+        accumulator = []
+      } else {
+        accumulator.push(chunk)
+        counter++
+      }
     }
   }
 }
